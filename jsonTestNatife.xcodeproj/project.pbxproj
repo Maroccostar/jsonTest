@@ -56,15 +56,31 @@
 		CEC27F4D2AA2336400F63D94 /* jsonTestNatife */ = {
 			isa = PBXGroup;
 			children = (
-				CEC27F4E2AA2336400F63D94 /* AppDelegate.swift */,
-				CEC27F502AA2336400F63D94 /* SceneDelegate.swift */,
+				CED3CF4D2AA36298007A1BF4 /* Resources */,
+				CED3CF4C2AA36278007A1BF4 /* Application */,
 				CEC27F522AA2336400F63D94 /* ViewController.swift */,
 				CEC27F542AA2336400F63D94 /* Main.storyboard */,
+			);
+			path = jsonTestNatife;
+			sourceTree = "<group>";
+		};
+		CED3CF4C2AA36278007A1BF4 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CEC27F4E2AA2336400F63D94 /* AppDelegate.swift */,
+				CEC27F502AA2336400F63D94 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CED3CF4D2AA36298007A1BF4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				CEC27F572AA2336600F63D94 /* Assets.xcassets */,
 				CEC27F592AA2336600F63D94 /* LaunchScreen.storyboard */,
 				CEC27F5C2AA2336600F63D94 /* Info.plist */,
 			);
-			path = jsonTestNatife;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +305,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 65DPF7M952;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = jsonTestNatife/Info.plist;
+				INFOPLIST_FILE = jsonTestNatife/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 65DPF7M952;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = jsonTestNatife/Info.plist;
+				INFOPLIST_FILE = jsonTestNatife/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
