@@ -9,15 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    // add comit
-    // add commit 2
-    // add commit 3
-    // add commit 4
-
-
 }
 
