@@ -75,11 +75,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
-        vc.detailItem = viewModel.allPosts[indexPath.row]
+        vc.detailItem = viewModel.filteredPosts[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
-
     }
-    
 }
 
 

@@ -15,6 +15,7 @@ enum PostsFetchingError: Error {
 
 // MARK: - Post
 struct Post: Decodable {
+    var postId: Int
     var title: String
     var preview_text: String
     var likes_count: Int

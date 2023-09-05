@@ -36,6 +36,7 @@ class PostsViewModel: PostsViewModelType {
 
                 let postsWithDateAndRating = postsResponse.posts.map { post in
                     return Post(
+                        postId: post.postId,
                         title: post.title,
                         preview_text: post.preview_text,
                         likes_count: post.likes_count,

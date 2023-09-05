@@ -54,7 +54,7 @@ extension DetailViewController {
     
     private func setupTextView(withTitle title: String, previewText: String) {
         
-        let title = "\(String(describing: detailItem?.title))\n\n"
+        let title = "\(detailItem?.title ?? "")\n\n"
         let fullText = title + (detailItem?.preview_text ?? "")
         textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +84,7 @@ extension DetailViewController {
             likesLabel.topAnchor.constraint(equalTo: textView.layoutMarginsGuide.bottomAnchor, constant: 8)
         ])
         
-        let likes = "❤️ \(String(describing: detailItem?.likes_count))"
+        let likes = "❤️ \(detailItem?.likes_count ?? 0)"
         likesLabel.text = likes
     }
     
