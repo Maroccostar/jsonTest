@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
@@ -20,10 +21,10 @@ class ViewController: UIViewController {
         
         setupTableView()
         
-        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(showFilterAlert))
-        navigationItem.rightBarButtonItem = filterButton
-        let resetButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetFilter))
-        navigationItem.leftBarButtonItem = resetButton
+        let sortByDateButton = UIBarButtonItem(title: "Sort by Date", style: .plain, target: self, action: #selector(sortPostsByDateDescending))
+        navigationItem.rightBarButtonItem = sortByDateButton
+        let sortByRatingButton = UIBarButtonItem(title: "Sort by Rating", style: .plain, target: self, action: #selector(sortPostsByRatingDescending))
+        navigationItem.leftBarButtonItem = sortByRatingButton
         
         let displayMode: DisplayMode = navigationController?.tabBarItem.tag == 0 ? .feedsPosts : .specificPosts
         
@@ -91,38 +92,17 @@ private extension ViewController {
         present(ac, animated: true)
     }
     
-    @objc func resetFilter() {
-        viewModel.filteredPosts = viewModel.allPosts
-        tableView.reloadData()
-    }
-    
-    func applyFilter(with keyword: String) {
-        if keyword.isEmpty {
-            resetFilter()
-            return
-        }
-        viewModel.filteredPosts = viewModel.allPosts.filter{ post in
-            return post.title.lowercased().contains(keyword.lowercased())
+    @objc func sortPostsByDateDescending() {
+        viewModel.filteredPosts.sort { (post1, post2) -> Bool in
+            return post1.timeshamp > post2.timeshamp
         }
         tableView.reloadData()
     }
     
-    @objc func showFilterAlert() {
-        let ac = UIAlertController(title: "Post filtering", message: "Enter a string to filter", preferredStyle: .alert)
-        ac.addTextField { textField in
-            textField.placeholder = "Enter keyword"
-            textField.textColor = .systemPink
+    @objc func sortPostsByRatingDescending() {
+        viewModel.filteredPosts.sort { (post1, post2) -> Bool in
+            return post1.likes_count > post2.likes_count
         }
-        
-        let filterAction = UIAlertAction(title: "Filter", style: .default) { [weak self, weak ac] _ in
-            if let keyword = ac?.textFields?.first?.text {
-                self?.applyFilter(with: keyword)
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        ac.addAction(filterAction)
-        ac.addAction(cancelAction)
-        present(ac, animated: true)
+        tableView.reloadData()
     }
 }

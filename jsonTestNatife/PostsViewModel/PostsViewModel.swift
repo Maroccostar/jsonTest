@@ -33,6 +33,18 @@ class PostsViewModel: PostsViewModelType {
             do {
                 let data = try Data(contentsOf: url)
                 let postsResponse = try JSONDecoder().decode(PostResponse.self, from: data)
+
+                let postsWithDateAndRating = postsResponse.posts.map { post in
+                    return Post(
+                        title: post.title,
+                        preview_text: post.preview_text,
+                        likes_count: post.likes_count,
+                        timeshamp: post.timeshamp
+                        )
+                }
+                self.allPosts = postsWithDateAndRating
+                self.filteredPosts = postsWithDateAndRating
+
                 DispatchQueue.main.async {
                     completion(.success(postsResponse.posts))
                 }
