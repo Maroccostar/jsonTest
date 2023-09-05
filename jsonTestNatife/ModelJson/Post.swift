@@ -7,6 +7,13 @@
 
 import Foundation
 
+// MARK: - PostsFetchingError
+enum PostsFetchingError: Error {
+    case invalidURL
+    case decodingError
+}
+
+// MARK: - Post
 struct Post: Decodable {
     var title: String
     var preview_text: String
