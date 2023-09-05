@@ -10,6 +10,7 @@
 		CE6512272AA6F66800E3B068 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6512262AA6F66800E3B068 /* PostResponse.swift */; };
 		CEB091382AA71B31002DED03 /* DisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB091372AA71B31002DED03 /* DisplayMode.swift */; };
 		CEB0913B2AA71F13002DED03 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0913A2AA71F13002DED03 /* PostsViewModel.swift */; };
+		CEB0913E2AA7241C002DED03 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0913D2AA7241C002DED03 /* DetailViewController.swift */; };
 		CEC27F4F2AA2336400F63D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC27F4E2AA2336400F63D94 /* AppDelegate.swift */; };
 		CEC27F512AA2336400F63D94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC27F502AA2336400F63D94 /* SceneDelegate.swift */; };
 		CEC27F532AA2336400F63D94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC27F522AA2336400F63D94 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		CE6512262AA6F66800E3B068 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
 		CEB091372AA71B31002DED03 /* DisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMode.swift; sourceTree = "<group>"; };
 		CEB0913A2AA71F13002DED03 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		CEB0913D2AA7241C002DED03 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CEC27F4B2AA2336400F63D94 /* jsonTestNatife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jsonTestNatife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC27F4E2AA2336400F63D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC27F502AA2336400F63D94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 			path = PostsViewModel;
 			sourceTree = "<group>";
 		};
+		CEB0913C2AA72404002DED03 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEB0913D2AA7241C002DED03 /* DetailViewController.swift */,
+			);
+			path = DetailViewController;
+			sourceTree = "<group>";
+		};
 		CEC27F422AA2336400F63D94 = {
 			isa = PBXGroup;
 			children = (
@@ -92,13 +102,14 @@
 		CEC27F4D2AA2336400F63D94 /* jsonTestNatife */ = {
 			isa = PBXGroup;
 			children = (
-				CEB091392AA71ED0002DED03 /* PostsViewModel */,
-				CED3CF4C2AA36278007A1BF4 /* Application */,
 				CEDF5C642AA658EC0051F363 /* Controller */,
+				CEB0913C2AA72404002DED03 /* DetailViewController */,
+				CEB091392AA71ED0002DED03 /* PostsViewModel */,
 				CEB091362AA71B1B002DED03 /* DisplayMode */,
 				CED612F42AA3D1ED000ADC64 /* ModelJson */,
 				CEB091352AA71ACD002DED03 /* PostResponse */,
 				CED3CF4D2AA36298007A1BF4 /* Resources */,
+				CED3CF4C2AA36278007A1BF4 /* Application */,
 				CEDF5C632AA658AD0051F363 /* XibCell */,
 			);
 			path = jsonTestNatife;
@@ -221,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB0913E2AA7241C002DED03 /* DetailViewController.swift in Sources */,
 				CEC27F532AA2336400F63D94 /* ViewController.swift in Sources */,
 				CEB091382AA71B31002DED03 /* DisplayMode.swift in Sources */,
 				CE6512272AA6F66800E3B068 /* PostResponse.swift in Sources */,
