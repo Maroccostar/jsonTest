@@ -58,18 +58,22 @@ private extension ViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { // +
+        return 239
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.filteredPosts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyTableViewCell.identifier, for: indexPath) as? MyTableViewCell else {
             return UITableViewCell()
         }
         let post = viewModel.filteredPosts[indexPath.row]
         cell.textLabel?.text = post.title
         cell.detailTextLabel?.text = post.preview_text
+        cell.configure(with: post) // +
         return cell
     }
     
@@ -78,6 +82,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         vc.detailItem = viewModel.filteredPosts[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
 
 
@@ -104,3 +109,4 @@ private extension ViewController {
         tableView.reloadData()
     }
 }
+
