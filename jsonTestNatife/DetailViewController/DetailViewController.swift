@@ -9,41 +9,105 @@ import Foundation
 import UIKit
 
 class DetailViewController: UIViewController {
-    var detailItem: Post?
+    var detailItem: Post
+    var viewModel: PostDetailsViewModelType! // ++
     
     var imageView: UIImageView!
     var textView: UITextView!
     var likesLabel: UILabel!
     var dateLabel: UILabel!
+    let colorHex = UIColor(hex: "46505A")
+    
+    init(with post: Post) {
+        self.detailItem = post
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private lazy var formatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        return dateFormatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let detailItem = detailItem else { return }
+        viewModel = PostDetailsViewModel(postId: detailItem.postId) // ++
         
-        navigationItem.title = "Title"
+        navigationItem.title = "\(detailItem.title)"
         view.backgroundColor = .white
         
         
         setupImageView()
-        setupTextView(withTitle: detailItem.title, previewText: detailItem.preview_text)
-        setupLikesLabel(likesCount: detailItem.likes_count)
-        setupDateLabel(timeshamp: TimeInterval(detailItem.timeshamp))
+        setupTextView()
+        setupLikesLabel()
+        setupDateLabel()
+        
+        
+        viewModel.fetchPostDetails(postId: detailItem.postId ) { [weak self] post in // ++
+            switch post {
+            case .success(let post):
+                self?.updateUI(with: post)
+            case .failure(let error):
+                debugPrint("Post fetching error: \(error)")
+                self?.showError()
+            }
+        }
+    }
+}
+
+// MARK: - Private
+private extension DetailViewController {
+    
+    func showError() { // ++
+        let ac = UIAlertController(title: "Loading error",
+                                   message: "There was a problem loading the feed; please check your connection and try again.",
+                                   preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
+   func updateUI(with post: Post) { // ++
+        navigationItem.title = post.title
+        textView.text = post.text
+        loadImage(from: post.imageURL ?? "default_image_url")
+        let likeText = "❤️ \(post.likesCount)"
+        likesLabel.text = likeText
+        let date = Date(timeIntervalSince1970: TimeInterval(post.timeStamp))
+        dateLabel.text = formatter.string(from: date)
         
     }
     
-}
+    func loadImage(from imageURL: String) { // ++
+        guard let url = URL(string: imageURL) else {
+            return
+        }
 
-extension DetailViewController {
-    // MARK: - Methods DetailViewController
+        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+            if let error = error {
+                print("Error when using image: \(error.localizedDescription)")
+                return
+            }
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self?.imageView.image = image
+                }
+            }
+        }.resume()
+    }
     
-    private func setupImageView() {
+    
+    func setupImageView() {
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .lightGray
         view.addSubview(imageView)
-        
+
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
@@ -52,14 +116,15 @@ extension DetailViewController {
         ])
     }
     
-    private func setupTextView(withTitle title: String, previewText: String) {
+    func setupTextView() {
         
-        let title = "\(detailItem?.title ?? "")\n\n"
-        let fullText = title + (detailItem?.preview_text ?? "")
+        let title = "\(detailItem.title)\n\n"
+        let fullText = title + (detailItem.text ?? "")
         textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.attributedText = attributedText(for: fullText)
         textView.isEditable = false
+        textView.textColor = colorHex // +
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.isScrollEnabled = true
         textView.sizeToFit()
@@ -69,56 +134,52 @@ extension DetailViewController {
             textView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             textView.topAnchor.constraint(equalTo: imageView.layoutMarginsGuide.bottomAnchor, constant: 8),
-            textView.heightAnchor.constraint(equalToConstant: 200)
+            textView.heightAnchor.constraint(equalToConstant: 400) // +++
         ])
     }
     
-    private func setupLikesLabel(likesCount: Int) {
+    func setupLikesLabel() {
         likesLabel = UILabel()
         likesLabel.translatesAutoresizingMaskIntoConstraints = false
         likesLabel.textAlignment = .left
+        likesLabel.textColor = colorHex // +
         view.addSubview(likesLabel)
-        
+
         NSLayoutConstraint.activate([
             likesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             likesLabel.topAnchor.constraint(equalTo: textView.layoutMarginsGuide.bottomAnchor, constant: 8)
         ])
-        
-        let likes = "❤️ \(detailItem?.likes_count ?? 0)"
+
+        let likes = "❤️ \(detailItem.likesCount)"
         likesLabel.text = likes
     }
     
-    private func setupDateLabel(timeshamp: TimeInterval) {
+    func setupDateLabel() {
         dateLabel = UILabel()
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.textAlignment = .right
+        dateLabel.textColor = colorHex // +
         view.addSubview(dateLabel)
-        
-        let date = Date(timeIntervalSince1970: timeshamp)
-        let formattedDate = formatDate(date)
+
+        let date = Date(timeIntervalSince1970: TimeInterval(detailItem.timeStamp))
+        let formattedDate = formatter.string(from: date)
         dateLabel.text = formattedDate
-        
+
         NSLayoutConstraint.activate([
             dateLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             dateLabel.topAnchor.constraint(equalTo: textView.layoutMarginsGuide.bottomAnchor, constant: 8)
         ])
     }
-    
-    private func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMMM yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    private func attributedText(for body: String) -> NSAttributedString {
+
+    func attributedText(for body: String) -> NSAttributedString {
          let paragraphStyle = NSMutableParagraphStyle()
          paragraphStyle.paragraphSpacing = 10
-         
+
          let attributes: [NSAttributedString.Key: Any] = [
              .font: UIFont.systemFont(ofSize: 18),
              .paragraphStyle: paragraphStyle
          ]
-         
+
          return NSAttributedString(string: body, attributes: attributes)
      }
 }
