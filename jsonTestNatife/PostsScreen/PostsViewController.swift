@@ -30,8 +30,10 @@ class PostsViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { // +
-        return 200
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.rowHeight = UITableView.automaticDimension // ++
+//        tableView.estimatedRowHeight = 100 // ++
+        return 200 // +
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +45,7 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let post = viewModel.filteredPosts[indexPath.row]
-        cell.configure(with: post) // +
+        cell.configure(with: post)
         cell.onExpandToggled = { [weak self] in
             self?.viewModel.processCellExpand(at: indexPath.row)
         }
@@ -107,8 +109,8 @@ private extension PostsViewController {
         viewModel.fetchData { [weak self] result in
             switch result {
             case.success(let posts):
-                self?.viewModel.allPosts = posts // +
-                self?.viewModel.filteredPosts = posts // +
+                self?.viewModel.allPosts = posts
+                self?.viewModel.filteredPosts = posts
                 self?.tableView.reloadData()
             case.failure(let error):
                 debugPrint("Posts fetching error: \(error)")

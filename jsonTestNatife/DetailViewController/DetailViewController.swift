@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var detailItem: Post
-    var viewModel: PostDetailsViewModelType! // ++
+    var viewModel: PostDetailsViewModelType!
     
     var imageView: UIImageView!
     var textView: UITextView!
@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = PostDetailsViewModel(postId: detailItem.postId) // ++
+        viewModel = PostDetailsViewModel(postId: detailItem.postId)
         
         navigationItem.title = "\(detailItem.title)"
         view.backgroundColor = .white
@@ -48,7 +48,7 @@ class DetailViewController: UIViewController {
         setupDateLabel()
         
         
-        viewModel.fetchPostDetails(postId: detailItem.postId ) { [weak self] post in // ++
+        viewModel.fetchPostDetails(postId: detailItem.postId ) { [weak self] post in
             switch post {
             case .success(let post):
                 self?.updateUI(with: post)
@@ -63,7 +63,7 @@ class DetailViewController: UIViewController {
 // MARK: - Private
 private extension DetailViewController {
     
-    func showError() { // ++
+    func showError() {
         let ac = UIAlertController(title: "Loading error",
                                    message: "There was a problem loading the feed; please check your connection and try again.",
                                    preferredStyle: .alert)
@@ -71,7 +71,7 @@ private extension DetailViewController {
         present(ac, animated: true)
     }
     
-   func updateUI(with post: Post) { // ++
+   func updateUI(with post: Post) {
         navigationItem.title = post.title
         textView.text = post.text
         loadImage(from: post.imageURL ?? "default_image_url")
@@ -82,7 +82,7 @@ private extension DetailViewController {
         
     }
     
-    func loadImage(from imageURL: String) { // ++
+    func loadImage(from imageURL: String) {
         guard let url = URL(string: imageURL) else {
             return
         }
@@ -124,7 +124,7 @@ private extension DetailViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.attributedText = attributedText(for: fullText)
         textView.isEditable = false
-        textView.textColor = colorHex // +
+        textView.textColor = colorHex
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.isScrollEnabled = true
         textView.sizeToFit()
@@ -134,7 +134,7 @@ private extension DetailViewController {
             textView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             textView.topAnchor.constraint(equalTo: imageView.layoutMarginsGuide.bottomAnchor, constant: 8),
-            textView.heightAnchor.constraint(equalToConstant: 400) // +++
+            textView.heightAnchor.constraint(equalToConstant: 400)
         ])
     }
     
@@ -142,7 +142,7 @@ private extension DetailViewController {
         likesLabel = UILabel()
         likesLabel.translatesAutoresizingMaskIntoConstraints = false
         likesLabel.textAlignment = .left
-        likesLabel.textColor = colorHex // +
+        likesLabel.textColor = colorHex
         view.addSubview(likesLabel)
 
         NSLayoutConstraint.activate([
@@ -158,7 +158,7 @@ private extension DetailViewController {
         dateLabel = UILabel()
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.textAlignment = .right
-        dateLabel.textColor = colorHex // +
+        dateLabel.textColor = colorHex
         view.addSubview(dateLabel)
 
         let date = Date(timeIntervalSince1970: TimeInterval(detailItem.timeStamp))

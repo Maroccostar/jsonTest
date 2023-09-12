@@ -21,7 +21,6 @@ class PostCell: UITableViewCell {
     
     @IBOutlet private weak var likesLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var contentViewCollection: UICollectionView!
     
     var isExpanded = false
     var onExpandToggled: (() -> Void)?
@@ -41,7 +40,7 @@ class PostCell: UITableViewCell {
         updateCellUI()
     }
     
-    @IBAction func expandButtonTapped(_ sender: UIButton) {
+    @IBAction private func expandButtonTapped(_ sender: UIButton) {
         isExpanded.toggle()
         onExpandToggled?()
         updateCellUI()
