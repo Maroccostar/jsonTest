@@ -9,7 +9,7 @@ import UIKit
 
 class PostsViewController: UIViewController {
     
-    var postId: PostDetailsViewModelType!
+//    var postId: PostDetailsViewModelType!
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -21,7 +21,7 @@ class PostsViewController: UIViewController {
         setupTableView()
         setupBarButtons()
         setupViewModel()
-        postId = PostDetailsViewModel(postId: 118)
+//        postId = PostDetailsViewModel(postId: 118)
         
     }
 }
