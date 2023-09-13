@@ -34,8 +34,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title =  "\(viewModel.post?.title ?? "")"
-        view.backgroundColor = .white
         
         setupImageView()
         setupTextView()
@@ -47,6 +45,8 @@ class DetailViewController: UIViewController {
             switch result {
             case .success(let post):
                 self?.updateUI(with: post)
+                self?.navigationItem.title = post.title
+                self?.view.backgroundColor = .white
             case .failure(let error):
                 debugPrint("Post fetching error: \(error)")
                 self?.showError()
