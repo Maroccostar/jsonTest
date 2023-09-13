@@ -9,8 +9,6 @@ import UIKit
 
 class PostsViewController: UIViewController {
     
-//    var postId: PostDetailsViewModelType!
-    
     @IBOutlet private weak var tableView: UITableView!
     
     var viewModel: PostsViewModelType!
@@ -21,8 +19,6 @@ class PostsViewController: UIViewController {
         setupTableView()
         setupBarButtons()
         setupViewModel()
-//        postId = PostDetailsViewModel(postId: 118)
-        
     }
 }
 
@@ -83,7 +79,7 @@ private extension PostsViewController {
     }
     
     func showPostDetails(_ post: Post) {
-        let vc = DetailViewController(with: post)
+        let vc = DetailViewController(with: post.postId)
         navigationController?.pushViewController(vc, animated: true)
     }
     

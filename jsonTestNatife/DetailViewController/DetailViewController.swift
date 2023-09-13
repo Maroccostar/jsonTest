@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class DetailViewController: UIViewController {
-//    var detailItem: Post
     var viewModel: PostDetailsViewModelType!
     
     var imageView: UIImageView!
@@ -18,8 +17,8 @@ class DetailViewController: UIViewController {
     var dateLabel: UILabel!
     let colorHex = UIColor(hex: "46505A")
     
-    init(with post: Post) {
-//        self.detailItem = post
+    init(with postID: Int) {
+        self.viewModel = PostDetailsViewModel(postId: postID)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,13 +34,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        viewModel = PostDetailsViewModel(postId: detailItem.postId)
-        viewModel = PostDetailsViewModel(postId: viewModel.postId)
-        
         navigationItem.title =  "\(viewModel.post?.title ?? "")"
         view.backgroundColor = .white
-        
         
         setupImageView()
         setupTextView()
@@ -49,15 +43,15 @@ class DetailViewController: UIViewController {
         setupDateLabel()
         
         
-        viewModel.fetchPostDetails(postId: viewModel.postId) { [weak self] post in
-            switch post {
+        viewModel.fetchPostDetails(completion: { [weak self] result in
+            switch result {
             case .success(let post):
                 self?.updateUI(with: post)
             case .failure(let error):
                 debugPrint("Post fetching error: \(error)")
                 self?.showError()
             }
-        }
+        })
     }
 }
 
