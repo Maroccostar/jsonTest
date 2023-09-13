@@ -45,8 +45,6 @@ class DetailViewController: UIViewController {
             switch result {
             case .success(let post):
                 self?.updateUI(with: post)
-                self?.navigationItem.title = post.title
-                self?.view.backgroundColor = .white
             case .failure(let error):
                 debugPrint("Post fetching error: \(error)")
                 self?.showError()
@@ -68,6 +66,7 @@ private extension DetailViewController {
     
    func updateUI(with post: Post) {
         navigationItem.title = post.title
+        view.backgroundColor = .white
         textView.text = post.text
         loadImage(from: post.imageURL ?? "default_image_url")
         let likeText = "❤️ \(post.likesCount)"
