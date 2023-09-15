@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CEB0913E2AA7241C002DED03 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0913D2AA7241C002DED03 /* DetailViewController.swift */; };
 		CEB289372AAF9825003D2599 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB289352AAF9825003D2599 /* PostsViewController.swift */; };
 		CEB289382AAF9825003D2599 /* PostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB289362AAF9825003D2599 /* PostsViewController.xib */; };
 		CEB2893A2AAF9A72003D2599 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB289392AAF9A72003D2599 /* PostsViewModel.swift */; };
@@ -16,18 +15,18 @@
 		CEB289412AAF9E2E003D2599 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB289402AAF9E2E003D2599 /* PostResponse.swift */; };
 		CEB289432AAF9E54003D2599 /* PostDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB289422AAF9E54003D2599 /* PostDetailsResponse.swift */; };
 		CEB289472AAF9F61003D2599 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB289462AAF9F61003D2599 /* UIViewController+Extensions.swift */; };
-		CEB289492AAF9F7A003D2599 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB289482AAF9F7A003D2599 /* UIColor+Extensions.swift */; };
 		CEC27F4F2AA2336400F63D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC27F4E2AA2336400F63D94 /* AppDelegate.swift */; };
 		CEC27F512AA2336400F63D94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC27F502AA2336400F63D94 /* SceneDelegate.swift */; };
 		CEC27F582AA2336600F63D94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC27F572AA2336600F63D94 /* Assets.xcassets */; };
 		CEC27F5B2AA2336600F63D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC27F592AA2336600F63D94 /* LaunchScreen.storyboard */; };
+		CEC598272AB420200064F27F /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC598252AB420200064F27F /* DetailController.swift */; };
+		CEC598282AB420200064F27F /* DetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC598262AB420200064F27F /* DetailController.xib */; };
 		CED612F62AA3D235000ADC64 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED612F52AA3D235000ADC64 /* Post.swift */; };
 		CEDF5C612AA658740051F363 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDF5C5F2AA658740051F363 /* PostCell.swift */; };
 		CEDF5C622AA658740051F363 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDF5C602AA658740051F363 /* PostCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CEB0913D2AA7241C002DED03 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CEB289352AAF9825003D2599 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		CEB289362AAF9825003D2599 /* PostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsViewController.xib; sourceTree = "<group>"; };
 		CEB289392AAF9A72003D2599 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
@@ -36,13 +35,14 @@
 		CEB289402AAF9E2E003D2599 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
 		CEB289422AAF9E54003D2599 /* PostDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsResponse.swift; sourceTree = "<group>"; };
 		CEB289462AAF9F61003D2599 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		CEB289482AAF9F7A003D2599 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CEC27F4B2AA2336400F63D94 /* jsonTestNatife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jsonTestNatife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC27F4E2AA2336400F63D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC27F502AA2336400F63D94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CEC27F572AA2336600F63D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC27F5A2AA2336600F63D94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEC27F5C2AA2336600F63D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC598252AB420200064F27F /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		CEC598262AB420200064F27F /* DetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailController.xib; sourceTree = "<group>"; };
 		CED612F52AA3D235000ADC64 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CEDF5C5F2AA658740051F363 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		CEDF5C602AA658740051F363 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -62,7 +62,8 @@
 		CEB0913C2AA72404002DED03 /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CEB0913D2AA7241C002DED03 /* DetailViewController.swift */,
+				CEC598252AB420200064F27F /* DetailController.swift */,
+				CEC598262AB420200064F27F /* DetailController.xib */,
 				CEB2893E2AAF9D00003D2599 /* PostDetailsViewModel.swift */,
 			);
 			path = DetailViewController;
@@ -81,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				CEB289462AAF9F61003D2599 /* UIViewController+Extensions.swift */,
-				CEB289482AAF9F7A003D2599 /* UIColor+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -217,6 +217,7 @@
 				CEC27F5B2AA2336600F63D94 /* LaunchScreen.storyboard in Resources */,
 				CEDF5C622AA658740051F363 /* PostCell.xib in Resources */,
 				CEC27F582AA2336600F63D94 /* Assets.xcassets in Resources */,
+				CEC598282AB420200064F27F /* DetailController.xib in Resources */,
 				CEB289382AAF9825003D2599 /* PostsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,14 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB0913E2AA7241C002DED03 /* DetailViewController.swift in Sources */,
 				CEB2893F2AAF9D00003D2599 /* PostDetailsViewModel.swift in Sources */,
 				CEB2893C2AAF9AA4003D2599 /* EndpointProvider.swift in Sources */,
-				CEB289492AAF9F7A003D2599 /* UIColor+Extensions.swift in Sources */,
 				CEB289412AAF9E2E003D2599 /* PostResponse.swift in Sources */,
 				CEB289472AAF9F61003D2599 /* UIViewController+Extensions.swift in Sources */,
 				CEB289372AAF9825003D2599 /* PostsViewController.swift in Sources */,
 				CEC27F4F2AA2336400F63D94 /* AppDelegate.swift in Sources */,
+				CEC598272AB420200064F27F /* DetailController.swift in Sources */,
 				CEB289432AAF9E54003D2599 /* PostDetailsResponse.swift in Sources */,
 				CEB2893A2AAF9A72003D2599 /* PostsViewModel.swift in Sources */,
 				CEC27F512AA2336400F63D94 /* SceneDelegate.swift in Sources */,

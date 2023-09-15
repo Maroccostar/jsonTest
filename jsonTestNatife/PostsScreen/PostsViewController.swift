@@ -79,7 +79,7 @@ private extension PostsViewController {
     }
     
     func showPostDetails(_ post: Post) {
-        let vc = DetailViewController(with: post.postId)
+        let vc = DetailController.instantiate(with: post.postId)
         navigationController?.pushViewController(vc, animated: true)
     }
     
