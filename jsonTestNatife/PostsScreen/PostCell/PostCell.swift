@@ -22,41 +22,29 @@ class PostCell: UITableViewCell {
     @IBOutlet private weak var likesLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
-    var isExpanded = false
     var onExpandToggled: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        expandButton.addTarget(self, action: #selector(expandButtonTapped(_:)), for: .touchUpInside)
         selectionStyle = .none
         descriptionLabel.numberOfLines = 2
+        expandButton.layer.cornerRadius = 10
+        expandButton.setTitleColor(.white, for: .normal)
+        expandButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 6)
     }
     
-    func configure(with post: Post) {
+    func configure(with post: Post, isExpanded: Bool) {
         titleLabel.text = post.title
         descriptionLabel.text = post.textPreview
         likesLabel.text = "❤️ \(post.likesCount)"
         dateLabel.text = formatDateFromTimestamp(post.timeStamp)
-        isExpanded = false
-        updateCellUI()
+        expandButton.setTitle(isExpanded ? "Collapse" : "Expand", for: .normal)
+        descriptionLabel.numberOfLines = isExpanded ? 0 : 2
     }
     
     @IBAction private func expandButtonTapped(_ sender: UIButton) {
-        isExpanded.toggle()
         onExpandToggled?()
-        updateCellUI()
-    }
-    
-    
-    private func updateCellUI() {
-        descriptionLabel.numberOfLines = isExpanded ? 0 : 2
-        expandButton.setTitle(isExpanded ? "Collapse" : "Expand", for: .normal)
-        configureButtonCollapseAndExpand()
-    }
-    
-    private func configureButtonCollapseAndExpand() {
-        expandButton.layer.cornerRadius = 10
-        expandButton.setTitleColor(.white, for: .normal)
-        expandButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 6)
     }
     
     func formatDateFromTimestamp(_ timestamp: Int) -> String {

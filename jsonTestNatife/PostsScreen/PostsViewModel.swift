@@ -11,6 +11,7 @@ protocol PostsViewModelType {
     func fetchData(completion: @escaping (Result<[Post], Error>) -> Void)
     func processCellExpand(at index: Int)
     func processItemSelected(at index: Int)
+    func isCellExpanded(at index: Int) -> Bool
     
     var allPosts: [Post] { get set }
     var filteredPosts: [Post] { get set }
@@ -21,7 +22,7 @@ class PostsViewModel: PostsViewModelType {
     
     var allPosts = [Post]()
     var filteredPosts = [Post]()
-    var indexesOfExpandedPosts: [Int] = []
+    var expandedCells: [Int: Bool] = [:]
     var onShowPostDetails: ((Post) -> Void)?
     
     func fetchData(completion: @escaping (Result<[Post], Error>) -> Void) {
@@ -60,12 +61,20 @@ class PostsViewModel: PostsViewModelType {
     }
     
     func processCellExpand(at index: Int) {
-        // add index to expanded or remove
+        if expandedCells[index] ?? false {
+            expandedCells.removeValue(forKey: index)
+        } else {
+            expandedCells[index] = true
+        }
     }
     
     func processItemSelected(at index: Int) {
         let post = filteredPosts[index]
         onShowPostDetails?(post)
+    }
+    
+    func isCellExpanded(at index: Int) -> Bool {
+        return expandedCells[index] ?? false
     }
     
 }

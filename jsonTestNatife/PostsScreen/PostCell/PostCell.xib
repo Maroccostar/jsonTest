@@ -38,7 +38,7 @@
                             <constraint firstAttribute="height" constant="20.333333333333332" id="mux-BV-jj6"/>
                             <constraint firstAttribute="width" constant="415" id="sEl-yC-R1G"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smB-hU-N01">
-                        <rect key="frame" x="16" y="42.333333333333336" width="415" height="20.333333333333336"/>
+                        <rect key="frame" x="16" y="42.333333333333336" width="415" height="115.66666666666666"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                         <color key="textColor" red="0.27511438729999999" green="0.31298813219999999" blue="0.35294681789999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -76,6 +76,7 @@
                     <constraint firstItem="QcT-xf-Wrq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="BIb-8K-0sr"/>
                     <constraint firstAttribute="bottom" secondItem="n7Q-RZ-QWk" secondAttribute="bottom" constant="8" id="Ibm-yU-4JV"/>
                     <constraint firstItem="smB-hU-N01" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ivg-Iu-ES9"/>
+                    <constraint firstItem="QcT-xf-Wrq" firstAttribute="top" secondItem="smB-hU-N01" secondAttribute="bottom" constant="15" id="KCi-Ru-CqB"/>
                     <constraint firstAttribute="trailing" secondItem="QSx-P5-d2j" secondAttribute="trailing" constant="16" id="Mhb-1e-ICA"/>
                     <constraint firstItem="smB-hU-N01" firstAttribute="top" secondItem="QSx-P5-d2j" secondAttribute="bottom" constant="16" id="Rvd-gm-2il"/>
                     <constraint firstItem="Wiw-Th-TdE" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Tar-sX-VUQ"/>
@@ -83,6 +84,7 @@
                     <constraint firstAttribute="trailing" secondItem="n7Q-RZ-QWk" secondAttribute="trailing" constant="16" id="k0b-Ag-VsE"/>
                     <constraint firstItem="n7Q-RZ-QWk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="m7x-x4-AEf"/>
                     <constraint firstItem="QSx-P5-d2j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="muM-ii-on5"/>
+                    <constraint firstItem="Wiw-Th-TdE" firstAttribute="top" secondItem="smB-hU-N01" secondAttribute="bottom" constant="15" id="rtS-2S-avZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

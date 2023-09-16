@@ -15,7 +15,6 @@ class PostsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
         setupBarButtons()
         setupViewModel()
@@ -27,9 +26,7 @@ class PostsViewController: UIViewController {
 extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        tableView.rowHeight = UITableView.automaticDimension // ++
-//        tableView.estimatedRowHeight = 100 // ++
-        return 200 // +
+        return viewModel.isCellExpanded(at: indexPath.row) ? UITableView.automaticDimension : 200
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,9 +38,10 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let post = viewModel.filteredPosts[indexPath.row]
-        cell.configure(with: post)
+        cell.configure(with: post, isExpanded: viewModel.isCellExpanded(at: indexPath.row))
         cell.onExpandToggled = { [weak self] in
             self?.viewModel.processCellExpand(at: indexPath.row)
+            self?.tableView.reloadData()
         }
         return cell
     }
