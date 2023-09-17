@@ -82,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB289462AAF9F61003D2599 /* UIViewController+Extensions.swift */,
+				CEB2893B2AAF9AA4003D2599 /* EndpointProvider.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -151,7 +152,6 @@
 				CEB289392AAF9A72003D2599 /* PostsViewModel.swift */,
 				CEB289352AAF9825003D2599 /* PostsViewController.swift */,
 				CEB289362AAF9825003D2599 /* PostsViewController.xib */,
-				CEB2893B2AAF9AA4003D2599 /* EndpointProvider.swift */,
 			);
 			path = PostsScreen;
 			sourceTree = "<group>";

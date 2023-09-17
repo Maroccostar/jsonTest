@@ -12,6 +12,8 @@ protocol PostsViewModelType {
     func processCellExpand(at index: Int)
     func processItemSelected(at index: Int)
     func isCellExpanded(at index: Int) -> Bool
+    func sortByDate()
+    func sortByRating()
     
     var allPosts: [Post] { get set }
     var filteredPosts: [Post] { get set }
@@ -75,6 +77,14 @@ class PostsViewModel: PostsViewModelType {
     
     func isCellExpanded(at index: Int) -> Bool {
         return expandedCells[index] ?? false
+    }
+    
+    func sortByDate() {
+        filteredPosts.sort(by: { $0.timeStamp > $1.timeStamp })
+    }
+    
+    func sortByRating() {
+        filteredPosts.sort(by: { $0.likesCount > $1.likesCount })
     }
     
 }

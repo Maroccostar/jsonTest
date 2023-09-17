@@ -33,4 +33,25 @@ struct Post: Decodable {
         case text
         case imageURL = "postImage"
     }
+    
+    var formatDateFromTimestamp: String {
+        let currentTime = Date().timeIntervalSince1970
+        let elapsedTime = currentTime - TimeInterval(timeStamp)
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+        
+        switch elapsedTime {
+        case 0..<60:
+            formatter.allowedUnits = [.second]
+        case 60..<3600:
+            formatter.allowedUnits = [.minute]
+        case 3600..<86400:
+            formatter.allowedUnits = [.hour]
+        default:
+            formatter.allowedUnits = [.day]
+        }
+        
+        let timeString = formatter.string(from: elapsedTime) ?? ""
+        return "\(timeString) ago"
+    }
 }

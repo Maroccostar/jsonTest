@@ -62,17 +62,13 @@ private extension PostsViewController {
         present(ac, animated: true)
     }
     
-    @objc func sortPostsByDateDescending() {
-        viewModel.filteredPosts.sort { (post1, post2) -> Bool in
-            return post1.timeStamp > post2.timeStamp
-        }
+    @objc func sortPostsByDate() {
+        viewModel.sortByDate()
         tableView.reloadData()
     }
     
-    @objc func sortPostsByRatingDescending() {
-        viewModel.filteredPosts.sort { (post1, post2) -> Bool in
-            return post1.likesCount > post2.likesCount
-        }
+    @objc func sortPostsByRating() {
+        viewModel.sortByRating()
         tableView.reloadData()
     }
     
@@ -82,9 +78,9 @@ private extension PostsViewController {
     }
     
     func setupBarButtons() {
-        let sortByDateButton = UIBarButtonItem(title: "Sort by Date", style: .plain, target: self, action: #selector(sortPostsByDateDescending))
+        let sortByDateButton = UIBarButtonItem(title: "Sort by Date", style: .plain, target: self, action: #selector(sortPostsByDate))
         navigationItem.rightBarButtonItem = sortByDateButton
-        let sortByRatingButton = UIBarButtonItem(title: "Sort by Rating", style: .plain, target: self, action: #selector(sortPostsByRatingDescending))
+        let sortByRatingButton = UIBarButtonItem(title: "Sort by Rating", style: .plain, target: self, action: #selector(sortPostsByRating))
         navigationItem.leftBarButtonItem = sortByRatingButton
     }
     

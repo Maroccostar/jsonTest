@@ -26,7 +26,6 @@ class PostCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        expandButton.addTarget(self, action: #selector(expandButtonTapped(_:)), for: .touchUpInside)
         selectionStyle = .none
         descriptionLabel.numberOfLines = 2
         expandButton.layer.cornerRadius = 10
@@ -38,34 +37,13 @@ class PostCell: UITableViewCell {
         titleLabel.text = post.title
         descriptionLabel.text = post.textPreview
         likesLabel.text = "❤️ \(post.likesCount)"
-        dateLabel.text = formatDateFromTimestamp(post.timeStamp)
+        dateLabel.text = post.formatDateFromTimestamp
         expandButton.setTitle(isExpanded ? "Collapse" : "Expand", for: .normal)
         descriptionLabel.numberOfLines = isExpanded ? 0 : 2
     }
     
     @IBAction private func expandButtonTapped(_ sender: UIButton) {
         onExpandToggled?()
-    }
-    
-    func formatDateFromTimestamp(_ timestamp: Int) -> String {
-        let currentTime = Date().timeIntervalSince1970
-        let elapsedTime = currentTime - TimeInterval(timestamp)
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .full
-        
-        switch elapsedTime {
-        case 0..<60:
-            formatter.allowedUnits = [.second]
-        case 60..<3600:
-            formatter.allowedUnits = [.minute]
-        case 3600..<86400:
-            formatter.allowedUnits = [.hour]
-        default:
-            formatter.allowedUnits = [.day]
-        }
-        
-        let timeString = formatter.string(from: elapsedTime) ?? ""
-        return "\(timeString) ago"
     }
 
 }
